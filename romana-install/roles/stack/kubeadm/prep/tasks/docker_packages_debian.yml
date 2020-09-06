@@ -3,3 +3,6 @@
   apt: update_cache="yes" pkg="{{ item }}" force="yes"
   with_items:
     - docker-engine
+  become: true
+  become_user: root
+

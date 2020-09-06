@@ -8,7 +8,7 @@ ram_size:
     devstack: 1024
     openstack: 1024
     nostack: 2048
-    kubeadm: 2048
+    kubeadm: 4096
 
 distro_info:
   "ubuntu":
@@ -18,7 +18,10 @@ distro_info:
         url:  "http://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"
       "xenial":
         name: "ubuntu/xenial64"
-        url:  "https://cloud-images.ubuntu.com/releases/16.04/release-20161010/ubuntu-16.04-server-cloudimg-amd64-vagrant.box"
+        url:  "https://cloud-images.ubuntu.com/releases/xenial/release-20200903/ubuntu-16.04-server-cloudimg-amd64-vagrant.box"
+      "bionic":
+        name: "ubuntu/bionic64"
+        url:  "https://cloud-images.ubuntu.com/bionic/20190101/bionic-server-cloudimg-amd64-vagrant.box"
     user: "ubuntu"
     bootstrap:
       - apt-get update

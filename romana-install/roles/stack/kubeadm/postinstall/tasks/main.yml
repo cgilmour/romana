@@ -22,5 +22,3 @@
     block: |
       # kubernetes bash auto completion
       source <(kubectl completion bash)
-
-- include: "demo.yml"

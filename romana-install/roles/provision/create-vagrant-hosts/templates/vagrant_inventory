@@ -1,6 +1,6 @@
-{{ stack_name }}-controller ansible_ssh_host="{{ host_cidr | ipaddr(10) | ipaddr('address') }}" ansible_ssh_user="{{ distro_info[distro].user }}" ansible_ssh_private_key_file="{{ romana_ssh_key | realpath }}"
+{{ stack_name }} ansible_ssh_host="{{ host_cidr | ipaddr(10) | ipaddr('address') }}" ansible_ssh_user="{{ distro_info[distro].user }}" ansible_ssh_private_key_file="{{ romana_ssh_key | realpath }}"
 {% for _ in range(compute_nodes) %}
-{{ stack_name }}-compute{{ '%02d' | format(loop.index) }}  ansible_ssh_host="{{ host_cidr | ipaddr(10 + loop.index) | ipaddr('address') }}" ansible_ssh_user="{{ distro_info[distro].user }}" ansible_ssh_private_key_file="{{ romana_ssh_key | realpath }}"
+{{ stack_name }}-m{{ '%02d' | format(loop.index) }}  ansible_ssh_host="{{ host_cidr | ipaddr(10 + loop.index) | ipaddr('address') }}" ansible_ssh_user="{{ distro_info[distro].user }}" ansible_ssh_private_key_file="{{ romana_ssh_key | realpath }}"
 {% endfor %}
 
 [stack_nodes:children]
@@ -8,9 +8,9 @@ controller
 computes
 
 [controller]
-{{ stack_name }}-controller
+{{ stack_name }}
 
 [computes]
 {% for _ in range(compute_nodes) %}
-{{ stack_name }}-compute{{ '%02d' | format(loop.index) }}
+{{ stack_name }}-m{{ '%02d' | format(loop.index) }}
 {% endfor %}
